@@ -1,5 +1,4 @@
 ---
-layout: default
 ---
 
 Temporary link back to old version: [Old Homepage](https://www.dsouza.uk/BoardGameHelper2/)
