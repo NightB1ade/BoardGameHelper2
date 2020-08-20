@@ -1,0 +1,4 @@
+title: "NightB1ade’s Board Game Helper"
+titles_from_headings:
+    enabled: false
+bggapi-thing: https://www.boardgamegeek.com/xmlapi2/thing?id=
