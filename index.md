@@ -11,8 +11,8 @@ Temporary link back to old version: [Old Homepage](https://www.dsouza.uk/BoardGa
 # JSON Editor
 
 [Games
-List](https://json-editor.github.io/json-editor/?data=N4Ig9gDgLglmB2BnEAuUMDGCA2MBGqIAZglAIYDuApomALZUCsIANOHgFZUZQD62ZAJ5gArlELwwAJzplsrEIgwALKrNShYUbFUIAFKlNrwFUQRF0p2XHgqlUAjiJj2AJqgDaIAOZkGyAF02CClIQ1gaDR8/SLQQMwtCMikpIQUSGTJxK3I8HVMYbUsQAHEY5DYReBgnKgBJKDVkFCgpESo2QqaohOKwTm5xNi18qzKGO0dnN08QPG9vGHc2eBiQIJAQsKkI5tB5xfc43sIYeEbvQwKiwgAhEpKAAjqAEQU6M5g6ETpUAEYAL4rNbHczFRCtM7ea6jEAAOTWbA+8AAMlR4N4oMpUAAWAH4glsRDKMAUXiGUJGU7nQxkHhwEzDVQTKx4MBgKAQ1IQHEgfFAA=){:target="_blank"}, [JSON Schema](JsonSchemas/GamesList.schema.json)
-
+List](https://json-editor.github.io/json-editor/?data=N4Ig9gDgLglmB2BnEAuUMDGCA2MBGqIAZglAIYDuApomALZUCsIANOHgFZUZQD62ZAJ5gArlELwwAJzplsrEIgwALKrNShYUbFUIAFKlNrwFUQRF0p2XHgqlUAjiJj2AJqgDaIAOZkGyAF02CClIQ1gaDR8/SLQQMwtCMikpIQUSGTJxK3I8HVMYbUsQAHEY5DYReBgnKgBJKDVkFCgpESo2QqaohOKwTm5xNi18qzKGO0dnN08QPG9vGHc2eBiQIJAQsKkI5tB5xfc43sIYeEbvQwKiwgAhEpKAAjqAEQU6M5g6ETpUAEYAL4rNbHczFRCtM7ea6jEAAOTWbA+8AAMlR4N4oMpUAAWAH4glsRDKMAUXiGUJGU7nQxkHhwEzDVQTKx4MBgKAQ1IQHEgfFAA=){:target="_blank"}, [JSON Schema](JsonSchemas/GamesList.schema.json)  
+Game Schema, [JSON Schema](JsonSchemas/Game.schema.json)
 
 
 
