@@ -1,0 +1,76 @@
+{
+	"title": "Game"
+	, "type": "object"
+	, "required": [
+		"bggid"
+		, "name"
+	]
+	, "properties": {
+		"bggid": {
+			"type": "integer"
+			, "title": "BGG ID"
+			, "minimum": 1
+		}
+		, "name": {
+			"type": "string"
+			, "title": "Name"
+			, "minLength": 4
+		}
+		, "textSections": {
+			"type": "array"
+			, "title": "Text Sections"
+			, "uniqueItems": true
+			, "items": {
+				"type": "object"
+				, "title": "Text Section"
+				, "required": [
+					"mainHeader"
+				]
+				, "properties": {
+					"mainHeader": {
+						"type": "string"
+						, "title": "Main Header"
+						, "minLength": 4
+					}
+					, "subsections": {
+						"type": "array"
+						, "title": "Subsections"
+						, "items": {
+							"type": "object"
+							, "title": "Subsection"
+							, "required": [
+								"subsectionHeader"
+							]
+							, "properties": {
+								"subsectionHeader": {
+									"type": "string"
+									, "title": "Subsection Header"
+									, "minLength": 4
+								}
+								, "bulletPoints": {
+									"type": "array"
+									, "title": "Bullet Points"
+									, "format": "table"
+									, "items": {
+										"type": "object"
+										, "title": "Bullet Point"
+										, "required": [
+											"text"
+										]
+										, "properties": {
+											"text": {
+												"type": "string"
+												, "title": "Text"
+												, "minLength": 3
+											}
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

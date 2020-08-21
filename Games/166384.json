@@ -1,0 +1,102 @@
+{
+	"bggid": 166384
+	, "name": "Spyfall"
+	, "textSections": [{
+			"mainHeader": "In Game"
+			, "subsections": [{
+				"subsectionHeader": "Locations"
+				, "bulletPoints": [{
+						"text": "Airplane"
+					}
+					, {
+						"text": "Amusement Park"
+					}
+					, {
+						"text": "Bank"
+					}
+					, {
+						"text": "Beach"
+					}
+					, {
+						"text": "Carnival"
+					}
+					, {
+						"text": "Casino"
+					}
+					, {
+						"text": "Circus Tent"
+					}
+					, {
+						"text": "Corporate Party"
+					}
+					, {
+						"text": "Crusader Army"
+					}
+					, {
+						"text": "Day Spa"
+					}
+					, {
+						"text": "Embassy"
+					}
+					, {
+						"text": "Hospital"
+					}
+					, {
+						"text": "Hotel"
+					}
+					, {
+						"text": "Military Base"
+					}
+					, {
+						"text": "Movie Studio"
+					}
+					, {
+						"text": "Nightclub"
+					}
+					, {
+						"text": "Ocean Liner"
+					}
+					, {
+						"text": "Passenger Train"
+					}
+					, {
+						"text": "Pirate Ship"
+					}
+					, {
+						"text": "Polar Station"
+					}
+					, {
+						"text": "Restaurant"
+					}
+					, {
+						"text": "School"
+					}
+					, {
+						"text": "Service Station (Mechanic’s)"
+					}
+					, {
+						"text": "Space Station"
+					}
+					, {
+						"text": "Submarine"
+					}
+					, {
+						"text": "Supermarket"
+					}
+					, {
+						"text": "Theatre"
+					}
+					, {
+						"text": "University"
+					}
+					, {
+						"text": "Zoo"
+					}
+					, {
+						"text": "<em>Spy School</em>"
+					}
+				]
+			}]
+		}
+	]
+}

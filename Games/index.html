@@ -9,7 +9,9 @@ layout: game
 		<tr name="ExpansionButtons" class="buttons"></tr>
 		<tr name="NoPlayers"></tr>
 		<tr name="Difficulty"></tr>
-		<tr name="DisplayButtons" class="buttons"></tr>
+		<tr name="DisplayButtons" class="buttons">
+			<td colspan="2"></td>
+		</tr>
 	</table>
 </span>
 
@@ -21,7 +23,47 @@ layout: game
 
 <script>
 	var url = new URL(window.location.href);
-	var BGGID = url.searchParams.get("bggid");
+	var bggid = url.searchParams.get("bggid");
+	var json = {};
+
+
+
+
+	function Display() {
+		var displayType = $("input[name='DisplayRadio']:checked").attr("displayType");
+		var displayIndex = $("input[name='DisplayRadio']:checked").attr("displayIndex");
+
+		var html = "";
+
+		if (displayType == "TextSection") {
+			var jsonSection = json.textSections[displayIndex];
+			html = Display_TextSection(jsonSection);
+		}
+
+		$("#GameInfo").html(html);
+	}
+
+
+
+
+	function Display_TextSection(json) {
+		var html = "";
+
+		html += "<h1>" + json.mainHeader + "</h1>";
+
+		json.subsections.forEach(function(value) {
+			html += "<h2>" + value.subsectionHeader + "</h2>";
+			if (value.bulletPoints != undefined) {
+				html += "<ul>";
+				value.bulletPoints.forEach(function(value) {
+					html += "<li>" + value.text + "</li>";
+				});
+				html += "</ul>";
+			}
+		});
+
+		return html;
+	}
 
 
 
@@ -29,7 +71,7 @@ layout: game
 	$(document).ready(function() {
 		//Get BGGAPI Data
 		$.get(
-			"{{ site.bggapi-thing }}" + BGGID
+			"{{ site.bggapi-thing }}" + bggid
 			, function(data) {
 				var item = $(data).find("items item");
 
@@ -41,5 +83,34 @@ layout: game
 				$("img#thumbnail").attr("src", img);
 			}
 		);
+
+		//Get JSON Data
+		$.get(
+				bggid + ".json"
+				, function(data) {
+					json = data;
+				}
+			)
+			.done(function() {
+				//Display Buttons
+				var html_DisplayButtons = "";
+
+				json.textSections.forEach(function(value, index) {
+					html_DisplayButtons += "<label for='DisplayRadio_TextSection" + index + "'>" + value.mainHeader + "</label>" +
+						" <input type='radio' name='DisplayRadio' id='DisplayRadio_TextSection" + index + "' displayType='TextSection' displayIndex='" + index + "'>";
+				});
+
+				// Bind jQuery
+				$("#Parameters tr[name='DisplayButtons'] td").html(html_DisplayButtons);
+				$("button").button();
+				$("input[type=checkbox], input[type=radio]").checkboxradio({
+					icon: false
+				});
+				// $(".spinner").spinner();
+
+				// Bind onChange
+				$("input[name='DisplayRadio'], input.Checkbox_Expansion").on("change", Display);
+				$("select[name='Difficulty'], select[name='NoPlayers']").on("selectmenuchange", Display);
+			});
 	});
 </script>
