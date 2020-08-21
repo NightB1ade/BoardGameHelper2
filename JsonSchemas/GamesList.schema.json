@@ -1,0 +1,31 @@
+{
+	"title": "Person"
+	, "type": "object"
+	, "required": [
+		"games"
+	]
+	, "properties": {
+		"games": {
+			"type": "array"
+			, "format": "table"
+			, "title": "Games"
+			, "uniqueItems": true
+			, "items": {
+				"type": "object"
+				, "title": "Game"
+				, "properties": {
+					"bggid": {
+						"type": "integer"
+						, "title": "BGG ID"
+						, "minimum": 1
+					}
+					, "name": {
+						"type": "string"
+						, "title": "Name"
+						, "minLength": 4
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,24 @@
+#GamesList div {
+	border-bottom: 1px solid #434343;
+	display: inline-block;
+	height: 50px;
+	padding: 5px 10px;
+	width: 250px;
+
+	span {
+		display: inline-block;
+		vertical-align: middle;
+
+		&.thumbnail {
+			text-align: center;
+			height: 50px;
+			margin: 0 10px 0 0;
+			width: 50px;
+
+			img {
+				max-height: 50px;
+				max-width: 50px;
+			}
+		}
+	}
+}
