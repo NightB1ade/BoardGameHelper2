@@ -13,6 +13,10 @@
 			, "items": {
 				"type": "object"
 				, "title": "Game"
+				, "required": [
+					"bggid"
+					, "name"
+				]
 				, "properties": {
 					"bggid": {
 						"type": "integer"
