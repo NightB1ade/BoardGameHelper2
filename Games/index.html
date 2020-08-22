@@ -88,36 +88,6 @@ layout: game
 					) {
 						html += "<li>" + value.text + "</li>";
 					}
-
-					// var DisplayRule = 0;
-					//
-					// //Check Expansion Display Rules
-					// if (
-					// 	value.expansionDisplayRules == undefined
-					// ) {
-					// 	DisplayRule = 1;
-					// } else {
-					// 	if (value.expansionDisplayRules.some(function(value) {
-					// 			if (
-					// 				expansionCodesChecked.includes(value.expansionCode) &&
-					// 				value.displayRule == false) {
-					// 				return true
-					// 			}
-					// 		}) == false &&
-					// 		value.expansionDisplayRules.some(function(value) {
-					// 			if (
-					// 				expansionCodesChecked.includes(value.expansionCode) && value.displayRule == true
-					// 			) {
-					// 				return true
-					// 			}
-					// 		})) {
-					// 		DisplayRule = 1;
-					// 	}
-					// }
-					//
-					// if (DisplayRule == 1) {
-					// 	html += "<li>" + value.text + "</li>";
-					// }
 				});
 				html += "</ul>";
 			}

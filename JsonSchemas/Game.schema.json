@@ -16,6 +16,37 @@
 			, "title": "Name"
 			, "minLength": 4
 		}
+		, "expansions": {
+			"type": "array"
+			, "title": "Expansions"
+			, "format": "table"
+			, "uniqueItems": true
+			, "items": {
+				"type": "object"
+				, "title": "Expansion"
+				, "required": [
+					"expansionCode"
+					, "expansionName"
+					, "default"
+				]
+				, "properties": {
+					"expansionCode": {
+						"type": "string"
+						, "title": "Expansion Code"
+						, "minLength": 4
+					}
+					, "expansionName": {
+						"type": "string"
+						, "title": "Expansion Name"
+						, "minLength": 4
+					}
+					, "default": {
+						"type": "boolean"
+						, "title": "Default State"
+					}
+				}
+			}
+		}
 		, "textSections": {
 			"type": "array"
 			, "title": "Text Sections"
@@ -50,7 +81,6 @@
 								, "bulletPoints": {
 									"type": "array"
 									, "title": "Bullet Points"
-									, "format": "table"
 									, "items": {
 										"type": "object"
 										, "title": "Bullet Point"
@@ -62,6 +92,31 @@
 												"type": "string"
 												, "title": "Text"
 												, "minLength": 3
+											}
+											, "expansionDisplayRules": {
+												"type": "array"
+												, "title": "Expansion Display Rules"
+												, "show_opt_in": true
+												, "items": {
+													"type": "object"
+													, "title": "Expansion Display Rule"
+													, "required": [
+														"expansionCode"
+														, "displayRule"
+													]
+													, "properties": {
+														"expansionCode": {
+															"type": "string"
+															, "title": "Expansion Code"
+															, "minLength": 4
+														}
+														, "displayRule": {
+															"type": "boolean"
+															, "title": "Display Rule"
+															, "default": true
+														}
+													}
+												}
 											}
 										}
 									}
