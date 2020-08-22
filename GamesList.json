@@ -1,5 +1,9 @@
 {
 	"games": [{
+			"bggid": 200147
+			, "name": "Kanagawa"
+		}
+		, {
 			"bggid": 166384
 			, "name": "Spyfall"
 		}

@@ -1,0 +1,27 @@
+{
+	"bggid": 200147
+	, "name": "Kanagawa"
+	, "expansions": []
+	, "textSections": [{
+		"mainHeader": "End Game"
+		, "subsections": [{
+			"subsectionHeader": "Scoring"
+			, "bulletPoints": [{
+					"text": "<strong>1 point per Lesson Card in your Print</strong>: Including Starting tile"
+				}
+				, {
+					"text": "<strong>1 point per longest sequence of identical seasons</strong>: Including Starting tile, Storm tokens are wild"
+				}
+				, {
+					"text": "<strong>Points on Lesson Cards</strong>: In both Print and Studio"
+				}
+				, {
+					"text": "<strong>Points on Diploma Tiles</strong>"
+				}
+				, {
+					"text": "<strong>2 points for Grand Master pawn</strong>"
+				}
+			]
+		}]
+	}]
+}
