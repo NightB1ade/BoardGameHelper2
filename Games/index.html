@@ -6,7 +6,9 @@ layout: game
 <span>
 	<img id="thumbnail">
 	<table id="Parameters">
-		<tr name="ExpansionButtons" class="buttons"></tr>
+		<tr name="ExpansionButtons" class="buttons">
+			<td colspan="2"></td>
+		</tr>
 		<tr name="NoPlayers"></tr>
 		<tr name="Difficulty"></tr>
 		<tr name="DisplayButtons" class="buttons">
@@ -26,12 +28,18 @@ layout: game
 	var bggid = url.searchParams.get("bggid");
 	var json = {};
 
+	var expansionCodesChecked = {};
+
 
 
 
 	function Display() {
 		var displayType = $("input[name='DisplayRadio']:checked").attr("displayType");
 		var displayIndex = $("input[name='DisplayRadio']:checked").attr("displayIndex");
+
+		expansionCodesChecked = $(".ExpansionCheckbox:checked").map(function() {
+			return $(this).attr("expansionCode");
+		}).get();
 
 		var html = "";
 
@@ -56,7 +64,60 @@ layout: game
 			if (value.bulletPoints != undefined) {
 				html += "<ul>";
 				value.bulletPoints.forEach(function(value) {
-					html += "<li>" + value.text + "</li>";
+					if (
+						value.expansionDisplayRules == undefined
+						|| (
+							(
+								value.expansionDisplayRules.some(function(value) {
+									return (
+										expansionCodesChecked.includes(value.expansionCode)
+										&& value.displayRule == false
+									)
+								}) == false
+								&& value.expansionDisplayRules.some(function(value) {
+									return (
+										(
+											value.expansionCode == "base"
+											|| expansionCodesChecked.includes(value.expansionCode)
+										)
+										&& value.displayRule == true
+									)
+								})
+							)
+						)
+					) {
+						html += "<li>" + value.text + "</li>";
+					}
+
+					// var DisplayRule = 0;
+					//
+					// //Check Expansion Display Rules
+					// if (
+					// 	value.expansionDisplayRules == undefined
+					// ) {
+					// 	DisplayRule = 1;
+					// } else {
+					// 	if (value.expansionDisplayRules.some(function(value) {
+					// 			if (
+					// 				expansionCodesChecked.includes(value.expansionCode) &&
+					// 				value.displayRule == false) {
+					// 				return true
+					// 			}
+					// 		}) == false &&
+					// 		value.expansionDisplayRules.some(function(value) {
+					// 			if (
+					// 				expansionCodesChecked.includes(value.expansionCode) && value.displayRule == true
+					// 			) {
+					// 				return true
+					// 			}
+					// 		})) {
+					// 		DisplayRule = 1;
+					// 	}
+					// }
+					//
+					// if (DisplayRule == 1) {
+					// 	html += "<li>" + value.text + "</li>";
+					// }
 				});
 				html += "</ul>";
 			}
@@ -92,15 +153,26 @@ layout: game
 				}
 			)
 			.done(function() {
+				//Expansion Buttons
+				var html_ExpansionButtons = "";
+
+				if (json.expansions != undefined) {
+					json.expansions.forEach(function(value) {
+						html_ExpansionButtons += "<label for='ExpansionCheckbox_" + value.expansionCode + "'>" + value.expansionName + "</label>"
+							+ " <input type='checkbox' class='ExpansionCheckbox' id='ExpansionCheckbox_" + value.expansionCode + "' expansionCode='" + value.expansionCode + "'" + ((value.default) ? " checked" : "") + ">";
+					});
+				}
+
 				//Display Buttons
 				var html_DisplayButtons = "";
 
 				json.textSections.forEach(function(value, index) {
-					html_DisplayButtons += "<label for='DisplayRadio_TextSection" + index + "'>" + value.mainHeader + "</label>" +
-						" <input type='radio' name='DisplayRadio' id='DisplayRadio_TextSection" + index + "' displayType='TextSection' displayIndex='" + index + "'>";
+					html_DisplayButtons += "<label for='DisplayRadio_TextSection" + index + "'>" + value.mainHeader + "</label>"
+						+ " <input type='radio' name='DisplayRadio' id='DisplayRadio_TextSection" + index + "' displayType='TextSection' displayIndex='" + index + "'>";
 				});
 
 				// Bind jQuery
+				$("#Parameters tr[name='ExpansionButtons'] td").html(html_ExpansionButtons);
 				$("#Parameters tr[name='DisplayButtons'] td").html(html_DisplayButtons);
 				$("button").button();
 				$("input[type=checkbox], input[type=radio]").checkboxradio({
@@ -109,7 +181,7 @@ layout: game
 				// $(".spinner").spinner();
 
 				// Bind onChange
-				$("input[name='DisplayRadio'], input.Checkbox_Expansion").on("change", Display);
+				$("input[name='DisplayRadio'], input.ExpansionCheckbox").on("change", Display);
 				$("select[name='Difficulty'], select[name='NoPlayers']").on("selectmenuchange", Display);
 			});
 	});

@@ -1,3 +1,4 @@
 {
 	"comma_first":true
+	,"operator_position":"after-newline"
 }
