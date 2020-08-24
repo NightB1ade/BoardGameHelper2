@@ -1,0 +1,124 @@
+{
+	"bggid": 70919
+	, "name": "Takenoko"
+	, "strings": {
+		"playersCapitalise": "Players"
+		, "playersLower": "players"
+		, "playerCapitalise": "Player"
+		, "playerLower": "player"
+	}
+	, "expansions": [{
+		"expansionCode": "Chibis"
+		, "expansionName": "Chibis"
+		, "default": true
+	}]
+	, "noPlayers": {
+		"min": 2
+		, "max": 4
+		, "default": 4
+	}
+	, "textSections": [{
+			"mainHeader": "Setup"
+			, "subsections": [{
+					"bulletPoints": [{
+							"text": "<strong>Starting Hand</strong>: One objective card of each category"
+						}
+						, {
+							"text": "<strong>Starting Player</strong>: Tallest player"
+						}
+					]
+				}
+				, {
+					"subsectionHeader": "Reminder"
+					, "bulletPoints": [{
+						"text": "<strong>Add Plot</strong>: Draw 3, place 1, replace rest onto the bottom of draw pile"
+					}]
+				}
+			]
+		}
+		, {
+			"mainHeader": "End Game"
+			, "subsections": [{
+					"subsectionHeader": "Trigger"
+					, "bulletPoints": [{
+							"text": "A player earns their <strong>${Players}</strong> objective card"
+							, "playersSubstitutions": [{
+								"searchValue": "Players"
+								, "newValues": [{
+										"noPlayers": 2
+										, "newValue": "9th"
+									}
+									, {
+										"noPlayers": 3
+										, "newValue": "8th"
+									}
+									, {
+										"noPlayers": 4
+										, "newValue": "7th"
+									}
+								]
+							}]
+						}
+						, {
+							"text": "The player who triggers end-game gets the <strong>‘Emperor’ card</strong> (+2 points)"
+						}
+						, {
+							"text": "The other ${Players} get <strong>one more turn</strong>"
+							, "playersSubstitutions": [{
+								"searchValue": "Players"
+								, "newValues": [{
+										"noPlayers": 2
+										, "newValue": "player"
+									}
+									, {
+										"noPlayers": 3
+										, "newValue": "two players"
+									}
+									, {
+										"noPlayers": 4
+										, "newValue": "three players"
+									}
+								]
+							}]
+						}
+					]
+				}
+				, {
+					"subsectionHeader": "Scoring"
+					, "bulletPoints": [{
+							"text": "Total points indicated on earned objective cards"
+						}
+						, {
+							"text": "2 points for each panda baby"
+							, "expansionDisplayRules": [{
+								"expansionCode": "Chibis"
+								, "displayRule": true
+							}]
+						}
+						, {
+							"text": "In case of tie, the player with most panda objective cards wins"
+						}
+						, {
+							"text": "In case of farther tie, shared victory"
+						}
+					]
+				}
+			]
+		}
+		, {
+			"mainHeader": "Variants"
+			, "subsections": [{
+				"bulletPoints": [{
+						"text": "<strong>No Instant Objectives</strong>: If a player picks an objective card already completed in the bamboo garden, they must discard it and pick a new objective card of a category of their choosing"
+					}
+					, {
+						"text": "<strong>Gourmet</strong>: The Panda cannot eat the bamboo’s first shoots, only the upper sections"
+					}
+					, {
+						"text": "<strong>Diversity</strong>: At the end of the game, each set of different Objectives categories (Plots / Gardener / Panda) earns 3 additional points"
+					}
+				]
+			}]
+		}
+	]
+}

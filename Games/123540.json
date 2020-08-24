@@ -1,6 +1,12 @@
 {
 	"bggid": 123540
 	, "name": "Tokaido"
+	, "strings": {
+		"playersCapitalise": "Travellers"
+		, "playersLower": "travellers"
+		, "playerCapitalise": "Traveller"
+		, "playerLower": "traveller"
+	}
 	, "expansions": [{
 			"expansionCode": "Crossroads"
 			, "expansionName": "Crossroads"

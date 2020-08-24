@@ -6,9 +6,7 @@ layout: game
 <span>
 	<img id="thumbnail">
 	<table id="Parameters">
-		<tr name="ExpansionButtons" class="buttons">
-			<td colspan="2"></td>
-		</tr>
+		<tr name="ExpansionButtons" class="buttons"></tr>
 		<tr name="NoPlayers"></tr>
 		<tr name="Difficulty"></tr>
 		<tr name="DisplayButtons" class="buttons">
@@ -36,6 +34,7 @@ layout: game
 	function Display() {
 		var displayType = $("input[name='DisplayRadio']:checked").attr("displayType");
 		var displayIndex = $("input[name='DisplayRadio']:checked").attr("displayIndex");
+		var noPlayers = Number($("select[name='NoPlayers'] option:selected").attr("code"));
 
 		expansionCodesChecked = $(".ExpansionCheckbox:checked").map(function() {
 			return $(this).attr("expansionCode");
@@ -45,7 +44,7 @@ layout: game
 
 		if (displayType == "TextSection") {
 			var jsonSection = json.textSections[displayIndex];
-			html = Display_TextSection(jsonSection);
+			html = Display_TextSection(jsonSection, noPlayers);
 		}
 
 		$("#GameInfo").html(html);
@@ -54,13 +53,15 @@ layout: game
 
 
 
-	function Display_TextSection(json) {
+	function Display_TextSection(jsonSection, noPlayers) {
 		var html = "";
 
-		html += "<h1>" + json.mainHeader + "</h1>";
+		html += "<h1>" + jsonSection.mainHeader + "</h1>";
 
-		json.subsections.forEach(function(value) {
-			html += "<h2>" + value.subsectionHeader + "</h2>";
+		jsonSection.subsections.forEach(function(value) {
+			if (value.subsectionHeader != undefined) {
+				html += "<h2>" + value.subsectionHeader + "</h2>";
+			}
 			if (value.bulletPoints != undefined) {
 				html += "<ul>";
 				value.bulletPoints.forEach(function(value) {
@@ -86,7 +87,21 @@ layout: game
 							)
 						)
 					) {
-						html += "<li>" + value.text + "</li>";
+						var html_item = "<li>" + value.text + "</li>";
+
+						if (value.playersSubstitutions != undefined) {
+							value.playersSubstitutions.forEach(function(value) {
+								html_item = html_item.replace(
+									"${" + value.searchValue + "}"
+									, value.newValues.find(function(value) {
+										return value.noPlayers == noPlayers;
+									}).newValue
+								);
+							});
+						}
+
+
+						html += html_item;
 					}
 				});
 				html += "</ul>";
@@ -124,13 +139,30 @@ layout: game
 			)
 			.done(function() {
 				//Expansion Buttons
-				var html_ExpansionButtons = "";
-
 				if (json.expansions != undefined) {
+					var html_ExpansionButtons = "";
+
 					json.expansions.forEach(function(value) {
-						html_ExpansionButtons += "<label for='ExpansionCheckbox_" + value.expansionCode + "'>" + value.expansionName + "</label>"
-							+ " <input type='checkbox' class='ExpansionCheckbox' id='ExpansionCheckbox_" + value.expansionCode + "' expansionCode='" + value.expansionCode + "'" + ((value.default) ? " checked" : "") + ">";
+						html_ExpansionButtons += "<td>Expansions</td>"
+							+ "<td>"
+							+ "<label for='ExpansionCheckbox_" + value.expansionCode + "'>" + value.expansionName + "</label>"
+							+ " <input type='checkbox' class='ExpansionCheckbox' id='ExpansionCheckbox_" + value.expansionCode + "' expansionCode='" + value.expansionCode + "'" + ((value.default) ? " checked" : "") + ">"
+							+ "</td>";
 					});
+				}
+
+				//Player Buttons
+				if (json.noPlayers != undefined) {
+					var html_NoPlayers = "<td>No. " + json.strings.playersCapitalise + "</td>"
+						+ "<td><select name='NoPlayers'>";
+
+					for (var i = json.noPlayers.min; i <= json.noPlayers.max; i += 1) {
+						html_NoPlayers += "<option code='" + i + "'"
+							+ ((i == json.noPlayers.default) ? " selected='selected'" : "")
+							+ ">" + i + "</option>";
+					}
+
+					html_NoPlayers += "</select></td>";
 				}
 
 				//Display Buttons
@@ -142,7 +174,11 @@ layout: game
 				});
 
 				// Bind jQuery
-				$("#Parameters tr[name='ExpansionButtons'] td").html(html_ExpansionButtons);
+				$("#Parameters tr[name='ExpansionButtons']").html(html_ExpansionButtons);
+				$("#Parameters tr[name='NoPlayers']").html(html_NoPlayers);
+				$("select[name=NoPlayers]").selectmenu({
+					width: 100
+				});
 				$("#Parameters tr[name='DisplayButtons'] td").html(html_DisplayButtons);
 				$("button").button();
 				$("input[type=checkbox], input[type=radio]").checkboxradio({

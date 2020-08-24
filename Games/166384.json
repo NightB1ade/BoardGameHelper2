@@ -1,6 +1,12 @@
 {
 	"bggid": 166384
 	, "name": "Spyfall"
+	, "strings": {
+		"playersCapitalise": "Players"
+		, "playersLower": "players"
+		, "playerCapitalise": "Player"
+		, "playerLower": "player"
+	}
 	, "textSections": [{
 		"mainHeader": "In Game"
 		, "subsections": [{

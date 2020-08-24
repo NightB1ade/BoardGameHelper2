@@ -4,21 +4,62 @@
 	, "required": [
 		"bggid"
 		, "name"
+		, "strings"
 	]
 	, "properties": {
 		"bggid": {
 			"type": "integer"
 			, "title": "BGG ID"
+			, "propertyOrder": 1
 			, "minimum": 1
 		}
 		, "name": {
 			"type": "string"
 			, "title": "Name"
+			, "propertyOrder": 2
 			, "minLength": 4
+		}
+		, "strings": {
+			"type": "object"
+			, "title": "Strings"
+			, "propertyOrder": 3
+			, "required": [
+				"playersCapitalise"
+				, "playersLower"
+				, "playerCapitalise"
+				, "playerLower"
+			]
+			, "properties": {
+				"playersCapitalise": {
+					"type": "string"
+					, "title": "Capitalised “Players”"
+					, "propertyOrder": 1
+					, "minLength": 4
+				}
+				, "playersLower": {
+					"type": "string"
+					, "title": "Lowered “players”"
+					, "propertyOrder": 2
+					, "minLength": 4
+				}
+				, "playerCapitalise": {
+					"type": "string"
+					, "title": "Capitalised “player”"
+					, "propertyOrder": 3
+					, "minLength": 4
+				}
+				, "playerLower": {
+					"type": "string"
+					, "title": "Lowered “player”"
+					, "propertyOrder": 4
+					, "minLength": 4
+				}
+			}
 		}
 		, "expansions": {
 			"type": "array"
 			, "title": "Expansions"
+			, "propertyOrder": 4
 			, "format": "table"
 			, "uniqueItems": true
 			, "items": {
@@ -33,23 +74,57 @@
 					"expansionCode": {
 						"type": "string"
 						, "title": "Expansion Code"
+						, "propertyOrder": 1
 						, "minLength": 4
 					}
 					, "expansionName": {
 						"type": "string"
 						, "title": "Expansion Name"
+						, "propertyOrder": 2
 						, "minLength": 4
 					}
 					, "default": {
 						"type": "boolean"
 						, "title": "Default State"
+						, "propertyOrder": 3
 					}
+				}
+			}
+		}
+		, "noPlayers": {
+			"type": "object"
+			, "title": "Number of Players"
+			, "propertyOrder": 5
+			, "required": [
+				"min"
+				, "max"
+				, "default"
+			]
+			, "properties": {
+				"min": {
+					"type": "integer"
+					, "title": "Minimum Players"
+					, "propertyOrder": 1
+					, "minimum": 1
+				}
+				, "max": {
+					"type": "integer"
+					, "title": "Maximum Players"
+					, "propertyOrder": 2
+					, "minimum": 1
+				}
+				, "default": {
+					"type": "integer"
+					, "title": "Default Players"
+					, "propertyOrder": 3
+					, "minimum": 1
 				}
 			}
 		}
 		, "textSections": {
 			"type": "array"
 			, "title": "Text Sections"
+			, "propertyOrder": 6
 			, "uniqueItems": true
 			, "items": {
 				"type": "object"
@@ -61,26 +136,27 @@
 					"mainHeader": {
 						"type": "string"
 						, "title": "Main Header"
+						, "propertyOrder": 1
 						, "minLength": 4
 					}
 					, "subsections": {
 						"type": "array"
 						, "title": "Subsections"
+						, "propertyOrder": 2
 						, "items": {
 							"type": "object"
 							, "title": "Subsection"
-							, "required": [
-								"subsectionHeader"
-							]
 							, "properties": {
 								"subsectionHeader": {
 									"type": "string"
 									, "title": "Subsection Header"
+									, "propertyOrder": 1
 									, "minLength": 4
 								}
 								, "bulletPoints": {
 									"type": "array"
 									, "title": "Bullet Points"
+									, "propertyOrder": 2
 									, "items": {
 										"type": "object"
 										, "title": "Bullet Point"
@@ -91,11 +167,62 @@
 											"text": {
 												"type": "string"
 												, "title": "Text"
+												, "propertyOrder": 1
 												, "minLength": 3
+											}
+											, "playersSubstitutions": {
+												"type": "array"
+												, "title": "Players Substitutions"
+												, "propertyOrder": 2
+												, "items": {
+													"type": "object"
+													, "title": "Players Substitution"
+													, "required": [
+														"searchValue"
+														, "newValues"
+													]
+													, "properties": {
+														"searchValue": {
+															"type": "string"
+															, "title": "Search Value"
+															, "propertyOrder": 1
+															, "minLength": 4
+														}
+														, "newValues": {
+															"type": "array"
+															, "title": "New Values"
+															, "propertyOrder": 2
+															, "format": "table"
+															, "items": {
+																"type": "object"
+																, "title": "New Value"
+																, "required": [
+																	"noPlayers"
+																	, "newValue"
+																]
+																, "properties": {
+																	"noPlayers": {
+																		"type": "integer"
+																		, "title": "New Value"
+																		, "propertyOrder": 1
+																		, "minimum": 1
+																	}
+																	, "newValue": {
+																		"type": "string"
+																		, "title": "New Value"
+																		, "propertyOrder": 2
+																		, "minLength": 1
+																	}
+																}
+															}
+														}
+													}
+												}
 											}
 											, "expansionDisplayRules": {
 												"type": "array"
 												, "title": "Expansion Display Rules"
+												, "propertyOrder": 3
 												, "show_opt_in": true
 												, "items": {
 													"type": "object"
@@ -108,11 +235,13 @@
 														"expansionCode": {
 															"type": "string"
 															, "title": "Expansion Code"
+															, "propertyOrder": 1
 															, "minLength": 4
 														}
 														, "displayRule": {
 															"type": "boolean"
 															, "title": "Display Rule"
+															, "propertyOrder": 2
 															, "default": true
 														}
 													}

@@ -1,6 +1,12 @@
 {
 	"bggid": 200147
 	, "name": "Kanagawa"
+	, "strings": {
+		"playersCapitalise": "Apprentices"
+		, "playersLower": "apprentices"
+		, "playerCapitalise": "Apprentice"
+		, "playerLower": "apprentice"
+	}
 	, "expansions": []
 	, "textSections": [{
 		"mainHeader": "End Game"
