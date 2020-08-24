@@ -140,15 +140,15 @@ layout: game
 			.done(function() {
 				//Expansion Buttons
 				if (json.expansions != undefined) {
-					var html_ExpansionButtons = "";
+					var html_ExpansionButtons = "<td>Expansions</td>"
+						+ "<td>";
 
 					json.expansions.forEach(function(value) {
-						html_ExpansionButtons += "<td>Expansions</td>"
-							+ "<td>"
-							+ "<label for='ExpansionCheckbox_" + value.expansionCode + "'>" + value.expansionName + "</label>"
-							+ " <input type='checkbox' class='ExpansionCheckbox' id='ExpansionCheckbox_" + value.expansionCode + "' expansionCode='" + value.expansionCode + "'" + ((value.default) ? " checked" : "") + ">"
-							+ "</td>";
+						html_ExpansionButtons += "<label for='ExpansionCheckbox_" + value.expansionCode + "'>" + value.expansionName + "</label>"
+							+ " <input type='checkbox' class='ExpansionCheckbox' id='ExpansionCheckbox_" + value.expansionCode + "' expansionCode='" + value.expansionCode + "'" + ((value.default) ? " checked" : "") + ">";
 					});
+
+					html_ExpansionButtons += "</td>";
 				}
 
 				//Player Buttons
