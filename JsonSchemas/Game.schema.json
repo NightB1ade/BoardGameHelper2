@@ -44,7 +44,7 @@
 				}
 				, "playerCapitalise": {
 					"type": "string"
-					, "title": "Capitalised “player”"
+					, "title": "Capitalised “Player”"
 					, "propertyOrder": 3
 					, "minLength": 4
 				}
@@ -203,7 +203,7 @@
 																, "properties": {
 																	"noPlayers": {
 																		"type": "integer"
-																		, "title": "New Value"
+																		, "title": "No. Players"
 																		, "propertyOrder": 1
 																		, "minimum": 1
 																	}
