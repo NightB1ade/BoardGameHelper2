@@ -223,7 +223,6 @@
 												"type": "array"
 												, "title": "Expansion Display Rules"
 												, "propertyOrder": 3
-												, "show_opt_in": true
 												, "items": {
 													"type": "object"
 													, "title": "Expansion Display Rule"
@@ -237,6 +236,33 @@
 															, "title": "Expansion Code"
 															, "propertyOrder": 1
 															, "minLength": 4
+														}
+														, "displayRule": {
+															"type": "boolean"
+															, "title": "Display Rule"
+															, "propertyOrder": 2
+															, "default": true
+														}
+													}
+												}
+											}
+											, "playerDisplayRules": {
+												"type": "array"
+												, "title": "Player Display Rules"
+												, "propertyOrder": 4
+												, "items": {
+													"type": "object"
+													, "title": "Player Display Rule"
+													, "required": [
+														"noPlayers"
+														, "displayRule"
+													]
+													, "properties": {
+														"noPlayers": {
+															"type": "integer"
+															, "title": "No. Players"
+															, "propertyOrder": 1
+															, "minimum": 1
 														}
 														, "displayRule": {
 															"type": "boolean"

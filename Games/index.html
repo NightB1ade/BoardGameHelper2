@@ -59,16 +59,21 @@ layout: game
 		html += "<h1>" + jsonSection.mainHeader + "</h1>";
 
 		jsonSection.subsections.forEach(function(value) {
+			//Section Header
 			if (value.subsectionHeader != undefined) {
 				html += "<h2>" + value.subsectionHeader + "</h2>";
 			}
+
+			//Bullet Points
 			if (value.bulletPoints != undefined) {
 				html += "<ul>";
 				value.bulletPoints.forEach(function(value) {
+
+					//Expansion and Players Display Rules
 					if (
-						value.expansionDisplayRules == undefined
-						|| (
-							(
+						(
+							value.expansionDisplayRules == undefined
+							|| (
 								value.expansionDisplayRules.some(function(value) {
 									return (
 										expansionCodesChecked.includes(value.expansionCode)
@@ -86,9 +91,28 @@ layout: game
 								})
 							)
 						)
+						&& (
+							value.playerDisplayRules == undefined
+							|| (
+								value.playerDisplayRules.some(function(value) {
+									return (
+										noPlayers == value.noPlayers
+										&& value.displayRule == false
+									)
+								}) == false
+								&& value.playerDisplayRules.some(function(value){
+									return (
+										noPlayers == value.noPlayers
+										&& value.displayRule == true
+									)
+									&& value.displayRule == true
+								})
+							)
+						)
 					) {
 						var html_item = "<li>" + value.text + "</li>";
 
+						//Players Substitution
 						if (value.playersSubstitutions != undefined) {
 							value.playersSubstitutions.forEach(function(value) {
 								html_item = html_item.replace(
