@@ -1,0 +1,78 @@
+{
+	"bggid": 253684
+	, "name": "Spring Meadow"
+	, "strings": {
+		"playersCapitalise": "Players"
+		, "playersLower": "players"
+		, "playerCapitalise": "Player"
+		, "playerLower": "player"
+	}
+	, "noPlayers": {
+		"min": 2
+		, "max": 4
+		, "default": 4
+	}
+	, "textSections": [{
+		"mainHeader": "Setup"
+		, "subsections": [{
+				"bulletPoints": [{
+						"text": "<strong>Player 2</strong>: ${Players} space Rock tile"
+						, "playersSubstitutions": [{
+							"searchValue": "Players"
+							, "newValues": [{
+									"noPlayers": 2
+									, "newValue": "2"
+								}
+								, {
+									"noPlayers": 3
+									, "newValue": "1"
+								}
+								, {
+									"noPlayers": 4
+									, "newValue": "1"
+								}
+							]
+						}]
+					}
+					, {
+						"text": "<strong>Player 3</strong>: ${Players} space Rock tile"
+						, "playersSubstitutions": [{
+							"searchValue": "Players"
+							, "newValues": [{
+									"noPlayers": 3
+									, "newValue": "3"
+								}
+								, {
+									"noPlayers": 4
+									, "newValue": "2"
+								}
+							]
+						}]
+						, "playerDisplayRules": [{
+								"noPlayers": 3
+								, "displayRule": true
+							}
+							, {
+								"noPlayers": 4
+								, "displayRule": true
+							}
+						]
+					}
+					, {
+						"text": "<strong>Player 4</strong>: 3 space Rock tile"
+						, "playerDisplayRules": [{
+							"noPlayers": 4
+							, "displayRule": true
+						}]
+					}
+				]
+			}
+			, {
+				"subsectionHeader": "Reminder"
+				, "bulletPoints": [{
+					"text": "<strong>Rock Tile</strong>: For 2/3/4/5+ adjacent holes, take a 1/2/3/4 Rock tile.  You may choose to take one smaller Rock tile"
+				}]
+			}
+		]
+	}]
+}
