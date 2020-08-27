@@ -1,0 +1,254 @@
+{
+	"bggid": 250309
+	, "name": "Darwin’s Choice"
+	, "strings": {
+		"playersCapitalise": "Players"
+		, "playersLower": "players"
+		, "playerCapitalise": "Player"
+		, "playerLower": "player"
+	}
+	, "noPlayers": {
+		"min": 2
+		, "max": 6
+		, "default": 4
+	}
+	, "textSections": [{
+			"mainHeader": "Setup"
+			, "subsections": [{
+				"bulletPoints": [{
+						"text": "Remove one of the following pairs:"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "Savanna/Steppe"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "Wetland/Swamp"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "Ocean/Coral Reef"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "Taiga/Tundra"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "Tropical Rainforest/Cloud Forest"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "High Mountains/Highlands"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "Coast/Islands"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "Desert/Stone Desert"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "Polar Desert/Cold Desert"
+						, "playerDisplayRules": [{
+							"noPlayers": 2
+							, "displayRule": true
+						}]
+					}
+					, {
+						"text": "<strong>Biomes</strong>: ${Players} biomes"
+						, "playersSubstitutions": [{
+							"searchValue": "Players"
+							, "newValues": [{
+									"noPlayers": 2
+									, "newValue": "3"
+								}
+								, {
+									"noPlayers": 3
+									, "newValue": "4"
+								}
+								, {
+									"noPlayers": 4
+									, "newValue": "4"
+								}
+								, {
+									"noPlayers": 5
+									, "newValue": "5"
+								}
+								, {
+									"noPlayers": 6
+									, "newValue": "5"
+								}
+							]
+						}]
+					}
+					, {
+						"text": "<strong>Trading Zone</strong>: ${Small} small cards and ${Large} large cards"
+						, "playersSubstitutions": [{
+								"searchValue": "Small"
+								, "newValues": [{
+										"noPlayers": 2
+										, "newValue": "2"
+									}
+									, {
+										"noPlayers": 3
+										, "newValue": "3"
+									}
+									, {
+										"noPlayers": 4
+										, "newValue": "3"
+									}
+									, {
+										"noPlayers": 5
+										, "newValue": "4"
+									}
+									, {
+										"noPlayers": 6
+										, "newValue": "4"
+									}
+								]
+							}
+							, {
+								"searchValue": "Large"
+								, "newValues": [{
+										"noPlayers": 2
+										, "newValue": "2"
+									}
+									, {
+										"noPlayers": 3
+										, "newValue": "2"
+									}
+									, {
+										"noPlayers": 4
+										, "newValue": "3"
+									}
+									, {
+										"noPlayers": 5
+										, "newValue": "3"
+									}
+									, {
+										"noPlayers": 6
+										, "newValue": "4"
+									}
+								]
+							}
+						]
+					}
+				]
+			}]
+		}
+		, {
+			"mainHeader": "In Game"
+			, "subsections": [{
+					"subsectionHeader": "Food Evaluation"
+					, "bulletPoints": [{
+							"text": "Adaptation"
+						}
+						, {
+							"text": "Competitive Strength"
+						}
+						, {
+							"text": "Carnivores: Can least adapted edible species if at least same adaptation and competitive strength"
+						}
+						, {
+							"text": "Simultaneous Eating: Which may lead to both animals unable to get enough food"
+						}
+					]
+				}
+				, {
+					"subsectionHeader": "Era Scoring"
+					, "bulletPoints": [{
+							"text": "<strong>Survival</strong>: 1 Darwin Point"
+						}
+						, {
+							"text": "<strong>Adaptation</strong>: Winning species gets Biome's amount of Darwin Points"
+						}
+						, {
+							"text": "<strong>Competitive Strength</strong>: Across all biomes, 3 most competitive gains 3/2/1 Darwin Points"
+						}
+					]
+				}
+				, {
+					"subsectionHeader": "Transition Phase"
+					, "bulletPoints": [{
+							"text": "Event Card"
+						}
+						, {
+							"text": "Biome Change: ${Players} Biomes"
+							, "playersSubstitutions": [{
+								"searchValue": "Players"
+								, "newValues": [{
+										"noPlayers": 2
+										, "newValue": "1/2/2"
+									}
+									, {
+										"noPlayers": 3
+										, "newValue": "2/3/3"
+									}
+									, {
+										"noPlayers": 4
+										, "newValue": "2/3/3"
+									}
+									, {
+										"noPlayers": 5
+										, "newValue": "3/4/4"
+									}
+									, {
+										"noPlayers": 6
+										, "newValue": "3/4/4"
+									}
+								]
+							}]
+						}
+						, {
+							"text": "Biomes are reshuffled back in"
+							, "playerDisplayRules": [{
+								"noPlayers": 2
+								, "displayRule": true
+							}]
+						}
+						, {
+							"text": "Renew Trading Zone"
+						}
+						, {
+							"text": "Replenish Hands"
+						}
+						, {
+							"text": "New First Player"
+						}
+					]
+				}
+			]
+		}
+	]
+}
